@@ -1,4 +1,4 @@
-   .player-bar {
+.player-bar {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -6,7 +6,8 @@
     height: 150px;
     background: rgba(255, 255, 255, 0.3);
     z-index: 100;
- 
+}
+
     a, a:hover {
       color: white;
       cursor: pointer;
@@ -91,7 +92,7 @@
         vertical-align: middle;
       }
     }
-  }
+  
  
   .player-bar-control-group {
     display: table-cell;
@@ -118,6 +119,7 @@
     border-radius: 2px;
     position: relative;
     cursor: pointer;
+  }
  
     .fill {
       background: white;
@@ -151,5 +153,7 @@
       height: 20px;
       margin-top: -10px;
       margin-left: -10px;
+
    }
   
+
