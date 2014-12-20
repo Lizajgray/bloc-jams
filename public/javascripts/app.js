@@ -124,14 +124,15 @@ var albumPicasso = {
 
  var currentlyPlayingSong = null;
 
- var createSongRow = function(songNumber, songName, songLength) {
-   var template =
-       '<tr>'
-     + '  <td class="song-number col-md-1" data-song-number="' + songNumber + '">' + songNumber + '</td>'
-     + '  <td class="col-md-9">' + songName + '</td>'
-     + '  <td class="col-md-2">' + songLength + '</td>'
-     + '</tr>'
-     ;
+var createSongRow = function(songNumber, songName, songLength) {
+  var template =
+      '<tr>'
+    + '  <td class="song-number col-md-1" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+    + '  <td class="col-md-9">' + songName + '</td>'
+    + '  <td class="col-md-2">' + songLength + '</td>'
+    + '</tr>'
+    ;
+
  
    var $row = $(template);
  
@@ -198,14 +199,14 @@ var albumPicasso = {
    $albumImage.attr('src', album.albumArtUrl);
  
    // Update the Song List
-   var $songList = $(".album-song-listing");
-   $songList.empty();
-   var songs = album.songs;
-   for (var i = 0; i < songs.length; i++) {
-     var songData = songs[i];
-     var $newRow = createSongRow(i + 1, songData.name, songData.length);
-     $songList.append($newRow);
-   }
+var $songList = $(".album-song-listing");
+  $songList.empty();
+  var songs = album.songs;
+  for (var i = 0; i < songs.length; i++) {
+    var songData = songs[i];
+    var $newRow = createSongRow(i, songData.name, songData.length);
+    $songList.append($newRow);
+  }
  
  };
  
@@ -269,10 +270,30 @@ setupSeekBars();
 });
 
 ;require.register("scripts/app", function(exports, require, module) {
-require("./landing");
-require('./collection');
-require('./album');
-require("./profile");
+//require('./landing');
+ //require('./album');
+ //require('./collection');
+ //require('./profile');
+ 
+angular.module('BlocJams', []).controller('Landing.controller', ['$scope', function($scope) {
+  $scope.subText = "Turn the music up!";
+
+  $scope.subTextClicked = function() {
+    $scope.subText += '!';
+  };
+
+   $scope.albumURLs = [
+     '/images/album-placeholders/album-1.jpg',
+     '/images/album-placeholders/album-2.jpg',
+     '/images/album-placeholders/album-3.jpg',
+     '/images/album-placeholders/album-4.jpg',
+     '/images/album-placeholders/album-5.jpg',
+     '/images/album-placeholders/album-6.jpg',
+     '/images/album-placeholders/album-7.jpg',
+     '/images/album-placeholders/album-8.jpg',
+     '/images/album-placeholders/album-9.jpg',
+   ];
+}]);
 });
 
 ;require.register("scripts/collection", function(exports, require, module) {
