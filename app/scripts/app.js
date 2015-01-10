@@ -127,7 +127,10 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
  }]);
  
  blocJams.service('SongPlayer', function() {
-   return {
+      var trackIndex = function(album, song) {
+     return album.songs.indexOf(song);
+   };
+    return {
      currentSong: null,
      currentAlbum: null,
      playing: false,
@@ -138,9 +141,25 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
      pause: function() {
        this.playing = false;
      },
-     setSong: function(album, song) {
+       next: function() {
+        var currentTrackIndex = trackIndex(this.currentAlbum, this.currentSong);
+        currentTrackIndex++;
+        if (currentTrackIndex >= this.currentAlbum.songs.length) {
+         currentTrackIndex = 0;
+       }
+       this.currentSong = this.currentAlbum.songs[currentTrackIndex];
+     },
+       previous: function() {
+        var currentTrackIndex = trackIndex(this.currentAlbum, this.currentSong);
+        currentTrackIndex--;
+         if (currentTrackIndex < 0) {
+          currentTrackIndex = this.currentAlbum.songs.length - 1;
+       }
+ 
+       this.currentSong = this.currentAlbum.songs[currentTrackIndex];
+     },
+ setSong: function(album, song) {
        this.currentAlbum = album;
        this.currentSong = song;
      }
    };
- });
