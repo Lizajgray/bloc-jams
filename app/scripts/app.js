@@ -31,12 +31,28 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
      controller: 'Landing.controller',
      templateUrl: '/templates/landing.html'
    });
+<<<<<<< HEAD
   
      $stateProvider.state('collection', {
+=======
+   
+    $stateProvider.state('collection', {
+>>>>>>> angular-album-view
      url: '/collection',
      controller: 'Collection.controller',
      templateUrl: '/templates/collection.html'
    });
+<<<<<<< HEAD
+=======
+  
+   $stateProvider.state('album', {
+     url: '/album',
+     templateUrl: '/templates/album.html',
+     controller: 'Album.controller'
+   });
+
+ }]);
+>>>>>>> angular-album-view
 
  }]);
  
@@ -61,6 +77,7 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
    ];
 }]);
 
+<<<<<<< HEAD
   blocJams.controller('Collection.controller', ['$scope', function($scope) {
    $scope.albums = [];
     for (var i = 0; i < 33; i++) {
@@ -71,6 +88,11 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
 blocJams.controller('Album.controller', ['$scope', function($scope) {
    $scope.album = angular.copy(albumPicasso);
 
+=======
+   blocJams.controller('Album.controller', ['$scope', function($scope) {
+   $scope.album = angular.copy(albumPicasso);
+  
+>>>>>>> angular-album-view
    var hoveredSong = null;
    var playingSong = null;
  
@@ -81,8 +103,13 @@ blocJams.controller('Album.controller', ['$scope', function($scope) {
    $scope.offHoverSong = function(song) {
      hoveredSong = null;
    };
+<<<<<<< HEAD
  
   $scope.getSongState = function(song) {
+=======
+
+   $scope.getSongState = function(song) {
+>>>>>>> angular-album-view
      if (song === playingSong) {
        return 'playing';
      }
@@ -91,12 +118,21 @@ blocJams.controller('Album.controller', ['$scope', function($scope) {
      }
      return 'default';
    };
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> angular-album-view
     $scope.playSong = function(song) {
       playingSong = song;
     };
  
     $scope.pauseSong = function(song) {
       playingSong = null;
+<<<<<<< HEAD
     };
+=======
+    }; 
+
+>>>>>>> angular-album-view
  }]);
