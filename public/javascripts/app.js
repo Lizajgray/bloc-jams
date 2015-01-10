@@ -277,7 +277,7 @@ setupSeekBars();
 
 
  // Example album.
- var albumPicasso = {
+var albumPicasso = {
    name: 'The Colors',
    artist: 'Pablo Picasso',
    label: 'Cubism',
@@ -293,7 +293,7 @@ setupSeekBars();
      ]
  };
  
-
+ 
 blocJams = angular.module('BlocJams', ['ui.router']);
 blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
    $locationProvider.html5Mode(true);
@@ -304,7 +304,7 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
      templateUrl: '/templates/landing.html'
    });
   
-   $stateProvider.state('collection', {
+     $stateProvider.state('collection', {
      url: '/collection',
      controller: 'Collection.controller',
      templateUrl: '/templates/collection.html'
@@ -335,12 +335,12 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
 
   blocJams.controller('Collection.controller', ['$scope', function($scope) {
    $scope.albums = [];
-   for (var i = 0; i < 33; i++) {
+    for (var i = 0; i < 33; i++) {
      $scope.albums.push(angular.copy(albumPicasso));
    }
  }]);
-
-  blocJams.controller('Album.controller', ['$scope', function($scope) {
+   
+blocJams.controller('Album.controller', ['$scope', function($scope) {
    $scope.album = angular.copy(albumPicasso);
 
    var hoveredSong = null;
