@@ -18,7 +18,7 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
      controller: 'Collection.controller',
      templateUrl: '/templates/collection.html'
    });
- 
+  
    $stateProvider.state('album', {
      url: '/album',
      templateUrl: '/templates/album.html',
@@ -47,9 +47,9 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
    ];
 }]);
 
-  blocJams.controller('Album.controller', ['$scope', function($scope) {
+   blocJams.controller('Album.controller', ['$scope', function($scope) {
    $scope.album = angular.copy(albumPicasso);
- 
+  
    var hoveredSong = null;
    var playingSong = null;
  
@@ -77,6 +77,6 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
  
     $scope.pauseSong = function(song) {
       playingSong = null;
-    };
-    
+    }; 
+
  }]);
