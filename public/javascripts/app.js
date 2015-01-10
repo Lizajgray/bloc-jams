@@ -305,7 +305,6 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
    });
 <<<<<<< HEAD
   
-     $stateProvider.state('collection', {
 =======
    
     $stateProvider.state('collection', {
@@ -357,16 +356,14 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
    }
  }]);
    
-blocJams.controller('Album.controller', ['$scope', function($scope) {
+ blocJams.controller('Album.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
    $scope.album = angular.copy(albumPicasso);
 
 =======
-   blocJams.controller('Album.controller', ['$scope', function($scope) {
-   $scope.album = angular.copy(albumPicasso);
+
   
 >>>>>>> angular-album-view
    var hoveredSong = null;
-   var playingSong = null;
  
    $scope.onHoverSong = function(song) {
      hoveredSong = song;
@@ -375,14 +372,9 @@ blocJams.controller('Album.controller', ['$scope', function($scope) {
    $scope.offHoverSong = function(song) {
      hoveredSong = null;
    };
-<<<<<<< HEAD
- 
-  $scope.getSongState = function(song) {
-=======
 
    $scope.getSongState = function(song) {
->>>>>>> angular-album-view
-     if (song === playingSong) {
+     if (song === SongPlayer.currentSong && SongPlayer.playing) {
        return 'playing';
      }
      else if (song === hoveredSong) {
@@ -390,24 +382,40 @@ blocJams.controller('Album.controller', ['$scope', function($scope) {
      }
      return 'default';
    };
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> angular-album-view
     $scope.playSong = function(song) {
-      playingSong = song;
+     SongPlayer.setSong($scope.album, song);
+     SongPlayer.play();    
     };
  
     $scope.pauseSong = function(song) {
-      playingSong = null;
-<<<<<<< HEAD
+     SongPlayer.pause();
     };
-=======
-    }; 
 
->>>>>>> angular-album-view
  }]);
+
+ blocJams.controller('PlayerBar.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
+   $scope.songPlayer = SongPlayer;
+ }]);
+ 
+ blocJams.service('SongPlayer', function() {
+   return {
+     currentSong: null,
+     currentAlbum: null,
+     playing: false,
+ 
+     play: function() {
+       this.playing = true;
+     },
+     pause: function() {
+       this.playing = false;
+     },
+     setSong: function(album, song) {
+       this.currentAlbum = album;
+       this.currentSong = song;
+     }
+   };
+ });
 });
 
 ;require.register("scripts/collection", function(exports, require, module) {
