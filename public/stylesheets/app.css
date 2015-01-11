@@ -205,10 +205,11 @@ a, a:hover {
 .volume {
   display: inline-block; }
   .volume i {
-    width: 40px;
+    width: 20px;
     font-size: 20px;
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    text-align: left; }
   .volume .slider {
     display: inline-block;
     width: 100px;
