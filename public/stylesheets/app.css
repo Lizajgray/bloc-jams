@@ -254,10 +254,10 @@ a, a:hover {
   cursor: pointer;
   transition: all 100ms ease-in-out; }
 
-.no-animate .fill, .no-animate .thumb {
+:active .fill, :active .thumb {
   transition: none; }
 
-:hover .thumb {
+:hover .thumb, :active .thumb {
   width: 20px;
   height: 20px;
   margin-top: -10px;
